@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-let x = Math.floor(Math.random());
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+    let x = Math.floor(Math.random() * 100);
     if (req.query.x != undefined) {
         x = req.query.x;
     }
@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
     let num3 = Math.tan(x);
     let num4 = Math.sqrt(x);
 
-    res.render('computation', { x:x, acosh:num1, log1p:num2, tan:num3, sqrt:num4  });
+    res.render('computation', { x:x, acosh:Math.acosh(x), log1p:Math.log1p(x), tan:Math.tan(x), sqrt:Math.sqrt(x)  });
 });
 
 module.exports = router;
